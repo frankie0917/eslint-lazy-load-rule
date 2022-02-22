@@ -7,8 +7,7 @@
 //------------------------------------------------------------------------------
 // Requirements
 //------------------------------------------------------------------------------
-
-const rule = require('.'),
+const { rules } = require('./index'),
   RuleTester = require('eslint').RuleTester;
 
 //------------------------------------------------------------------------------
@@ -82,5 +81,9 @@ const testCases = [
 ];
 
 testCases.forEach((c) => {
-  ruleTester.run(c.name, rule, { invalid: [], valid: [], ...c });
+  ruleTester.run(c.name, rules['use-lazy-loading'], {
+    invalid: [],
+    valid: [],
+    ...c,
+  });
 });
