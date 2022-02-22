@@ -1,4 +1,4 @@
-# Eslint lazy loading rule
+# Eslint-plugin-lazy-load
 
 Gives warning when lazy loading is possible (lazy-load-rule)
 
