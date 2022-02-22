@@ -1,6 +1,6 @@
 {
-  "name": "eslint-lazy-load-rule",
-  "version": "1.0.0",
+  "name": "eslint-plugin-lazy-load",
+  "version": "1.0.1",
   "description": "eslint plugin - Gives warning when lazy loading is possible but not used",
   "main": "dist/index.js",
   "files": [
@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/frankie0917/eslint-lazy-load-rule.git"
+    "url": "git+https://github.com/frankie0917/eslint-plugin-lazy-load.git"
   },
   "author": "frankie0917",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/frankie0917/eslint-lazy-load-rule/issues"
+    "url": "https://github.com/frankie0917/eslint-plugin-lazy-load/issues"
   },
-  "homepage": "https://github.com/frankie0917/eslint-lazy-load-rule#readme",
+  "homepage": "https://github.com/frankie0917/eslint-plugin-lazy-load#readme",
   "devDependencies": {
     "eslint": "^8.9.0",
     "uglify-js": "^3.15.1"

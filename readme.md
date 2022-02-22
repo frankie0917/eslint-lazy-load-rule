@@ -5,6 +5,28 @@ Gives warning when lazy loading is possible (lazy-load-rule)
 When load time is important factor of your frontend application,
 you can use this rule to warn you whenever lazy loading is possible.
 
+## Installation
+
+```sh
+npm install -D eslint-plugin-lazy-load
+yarn add -D eslint-plugin-lazy-load
+```
+
+## Usage
+
+In your eslint config
+
+```json
+{
+  "plugins": [
+    "lazy-load"
+  ],
+  "rules": {
+    "lazy-load/use-lazy-loading": "warn"
+  },
+}
+```
+
 ## Rule Details
 
 This rule aims to help eliminate any lazy-loadable code that is not lazy-loaded.
