@@ -8,7 +8,7 @@
 // Requirements
 //------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/lazy-load-rule'),
+const rule = require('.'),
   RuleTester = require('eslint').RuleTester;
 
 //------------------------------------------------------------------------------
