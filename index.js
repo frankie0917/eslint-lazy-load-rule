@@ -15,19 +15,9 @@ module.exports = {
   rules: {
     'use-lazy-loading': {
       create(ctx) {
-        // variables should be defined here
-
-        //----------------------------------------------------------------------
-        // Helpers
-        //----------------------------------------------------------------------
-
-        // any helper functions should go here or else delete this section
-
-        //----------------------------------------------------------------------
-        // Public
-        //----------------------------------------------------------------------
         const identifiers = [];
         const optinalMap = {};
+        let hasReport = false;
         return {
           // visitor functions for different types of nodes
           ImportSpecifier: (node) => identifiers.push(node.local.name),
@@ -71,6 +61,8 @@ module.exports = {
             optinalMap[node.name].nodes.push(node);
           },
           onCodePathEnd: () => {
+            if (hasReport) return;
+            hasReport = true;
             Object.values(optinalMap).forEach((item) => {
               if (item.value === false) return;
               item.nodes.forEach((node) => {
