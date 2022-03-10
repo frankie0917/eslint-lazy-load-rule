@@ -38,8 +38,8 @@ const testCases = [
     valid: [
       {
         code: `
-        import { foo } from './foo';
-        if (foo > 8 && 6 < 'foo') foo();
+        import { a } from 'a';
+        if (a > 8 && 6 < 'a') a();
         `,
       },
     ],
@@ -49,8 +49,8 @@ const testCases = [
     valid: [
       {
         code: `
-        import { foo } from './foo';
-        true ? foo() : false;
+        import { a } from 'a';
+        true ? a() : false;
         `,
       },
     ],
@@ -60,8 +60,8 @@ const testCases = [
     valid: [
       {
         code: `
-        import { foo } from './foo';
-        foo && foo();
+        import { a } from 'a';
+        a && a();
         `,
       },
     ],
@@ -75,6 +75,33 @@ const testCases = [
         if(true) a();
         `,
         errors: [{ message: 'Consider using lazy loading' }],
+      },
+    ],
+  },
+  {
+    name: "should not report when idetifier appears whthin both if's consequent & alternate statement",
+    valid: [
+      {
+        code: `
+        import {a} from 'a';
+        if(true){
+          a();
+        }else{
+          a();
+        }
+        `,
+      },
+    ],
+  },
+  {
+    name: 'should not report when valid idetifier share the same import as invalid idetifier',
+    valid: [
+      {
+        code: `
+        import {a, b} from 'a';
+        a()
+        if(true) b();
+        `,
       },
     ],
   },
