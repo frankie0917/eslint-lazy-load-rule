@@ -16,11 +16,11 @@ module.exports = {
     'use-lazy-loading': {
       create(ctx) {
         const identifiers = [];
-        /**record identiefier and is it optional throughout the file
+        /**record identifier and is it optional throughout the file
          * - key: identifier
          * - value: is it optional for every identifier
          */
-        const optinalMap = {};
+        const optionalMap = {};
         /**record identifier and it's import source
          * - key: every imported identifier
          * - value: the import source of said identifier
@@ -93,19 +93,19 @@ module.exports = {
               }) !== undefined;
             if (!isOptional)
               isImportSourceOptionalMap[importSourceMap[node.name]] = false;
-            if (optinalMap[node.name] === undefined) {
-              optinalMap[node.name] = { value: isOptional, nodes: [node] };
+            if (optionalMap[node.name] === undefined) {
+              optionalMap[node.name] = { value: isOptional, nodes: [node] };
               return;
             }
-            if (optinalMap[node.name].value === false) return;
-            optinalMap[node.name].value = isOptional;
-            optinalMap[node.name].nodes.push(node);
+            if (optionalMap[node.name].value === false) return;
+            optionalMap[node.name].value = isOptional;
+            optionalMap[node.name].nodes.push(node);
           },
           onCodePathEnd: () => {
             if (hasReport) return;
             hasReport = true;
 
-            Object.values(optinalMap).forEach((item) => {
+            Object.values(optionalMap).forEach((item) => {
               if (item.value === false) return;
               item.nodes.forEach((node) => {
                 if (!isImportSourceOptionalMap[importSourceMap[node.name]])

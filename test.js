@@ -23,7 +23,7 @@ const ruleTester = new RuleTester({
 
 const testCases = [
   {
-    name: 'should not report when idetifier is not a imported identifier',
+    name: 'should not report when an identifier is not an imported identifier',
     valid: [
       {
         code: `
@@ -34,7 +34,7 @@ const testCases = [
     ],
   },
   {
-    name: 'should not report when idetifier is whthin if test statement',
+    name: 'should not report when an identifier is within an if test statement',
     valid: [
       {
         code: `
@@ -45,7 +45,7 @@ const testCases = [
     ],
   },
   {
-    name: 'should not report when idetifier is whthin conditional statement',
+    name: 'should not report when an identifier is within a conditional statement',
     valid: [
       {
         code: `
@@ -56,7 +56,7 @@ const testCases = [
     ],
   },
   {
-    name: 'should not report when idetifier is whthin logical statement',
+    name: 'should not report when an identifier is within a logical statement',
     valid: [
       {
         code: `
@@ -67,7 +67,7 @@ const testCases = [
     ],
   },
   {
-    name: 'should report when idetifier is whthin if statement',
+    name: 'should report when an identifier is within an if statement',
     invalid: [
       {
         code: `
@@ -79,7 +79,7 @@ const testCases = [
     ],
   },
   {
-    name: "should not report when idetifier appears whthin both if's consequent & alternate statement",
+    name: "should not report when an identifier appears within both if's consequent & alternate statement",
     valid: [
       {
         code: `
@@ -94,13 +94,29 @@ const testCases = [
     ],
   },
   {
-    name: 'should not report when valid idetifier share the same import as invalid idetifier',
+    name: 'should not report when a valid identifier share the same import as an invalid identifier',
     valid: [
       {
         code: `
         import {a, b} from 'a';
         a()
         if(true) b();
+        `,
+      },
+    ],
+  },
+  {
+    name: 'should not report when an invalid identifier is valid in another function',
+    valid: [
+      {
+        code: `
+        import {a} from 'a';
+        const fn1 = ()=>{
+          a();
+        }
+        const fn2 = ()=>{
+          if(true) a();
+        }
         `,
       },
     ],
